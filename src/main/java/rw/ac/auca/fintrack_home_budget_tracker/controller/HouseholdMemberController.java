@@ -17,18 +17,15 @@ public class HouseholdMemberController {
     public HouseholdMemberController(HouseholdMemberService householdMemberService) {
         this.householdMemberService = householdMemberService;
     }
-
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody HouseholdMember householdMember) {
         String message = householdMemberService.saveHouseholdMember(householdMember);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
-
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(householdMemberService.getAllHouseholdMembers(), HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
         Optional<HouseholdMember> result = householdMemberService.getHouseholdMemberById(id);
@@ -37,7 +34,6 @@ public class HouseholdMemberController {
         }
         return new ResponseEntity<>(result.get(), HttpStatus.OK);
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody HouseholdMember householdMember) {
         String message = householdMemberService.updateHouseholdMember(id, householdMember);
@@ -46,7 +42,6 @@ public class HouseholdMemberController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = householdMemberService.deleteHouseholdMember(id);
@@ -55,19 +50,14 @@ public class HouseholdMemberController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // B1
     @GetMapping("/by-last-name")
     public ResponseEntity<?> getByLastName(@RequestParam String lastName) {
         return new ResponseEntity<>(householdMemberService.getByLastName(lastName), HttpStatus.OK);
     }
-
-    // C4
     @GetMapping("/of-account/{accountId}")
     public ResponseEntity<?> getMembersByAccount(@PathVariable UUID accountId) {
         if (!householdMemberService.accountExists(accountId)) {
             return new ResponseEntity<>("The account with that id does not exist", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(householdMemberService.getMembersByAccount(accountId), HttpStatus.OK);
-    }
+        return new ResponseEntity<>(householdMemberService.getMembersByAccount(accountId), HttpStatus.OK);}
 }

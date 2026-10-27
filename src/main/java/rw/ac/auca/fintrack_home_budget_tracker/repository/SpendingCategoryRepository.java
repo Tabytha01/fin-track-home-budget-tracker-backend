@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface SpendingCategoryRepository extends JpaRepository<SpendingCategory, UUID> {
-
-    // C3 - JPQL
     @Query("SELECT s FROM SpendingCategory s WHERE s.accounts IS EMPTY")
     List<SpendingCategory> findUnused();
 }

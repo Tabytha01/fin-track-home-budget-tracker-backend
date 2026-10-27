@@ -11,7 +11,6 @@ import java.util.UUID;
 public class SpendingCategoryService {
 
     private final SpendingCategoryRepository spendingCategoryRepository;
-
     public SpendingCategoryService(SpendingCategoryRepository spendingCategoryRepository) {
         this.spendingCategoryRepository = spendingCategoryRepository;
     }
@@ -20,11 +19,9 @@ public class SpendingCategoryService {
         spendingCategoryRepository.save(spendingCategory);
         return "Spending category saved successfully";
     }
-
     public List<SpendingCategory> getAllSpendingCategories() {
         return spendingCategoryRepository.findAll();
     }
-
     public Optional<SpendingCategory> getSpendingCategoryById(UUID id) {
         return spendingCategoryRepository.findById(id);
     }
@@ -38,7 +35,6 @@ public class SpendingCategoryService {
         spendingCategoryRepository.save(spendingCategory);
         return "Spending category updated successfully";
     }
-
     public String deleteSpendingCategory(UUID id) {
         Optional<SpendingCategory> existing = spendingCategoryRepository.findById(id);
         if (existing.isEmpty()) {
@@ -47,8 +43,6 @@ public class SpendingCategoryService {
         spendingCategoryRepository.deleteById(id);
         return "Spending category deleted successfully";
     }
-
-    // C3
     public List<SpendingCategory> getUnused() {
         return spendingCategoryRepository.findUnused();
     }

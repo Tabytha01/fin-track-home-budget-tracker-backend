@@ -13,11 +13,10 @@ import java.util.UUID;
 public class AccountController {
 
     private final AccountService accountService;
-
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService)
+    {
         this.accountService = accountService;
     }
-
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Account account) {
         String message = accountService.saveAccount(account);
@@ -55,14 +54,10 @@ public class AccountController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // C1
     @GetMapping("/by-spending-category")
     public ResponseEntity<?> getBySpendingCategory(@RequestParam String name) {
         return new ResponseEntity<>(accountService.getAccountsBySpendingCategory(name), HttpStatus.OK);
     }
-
-    // D3
     @PutMapping("/{accountId}/spending-categories/{spendingCategoryId}")
     public ResponseEntity<String> addSpendingCategory(@PathVariable UUID accountId, @PathVariable UUID spendingCategoryId) {
         String message = accountService.addSpendingCategory(accountId, spendingCategoryId);
@@ -74,8 +69,6 @@ public class AccountController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // D4
     @PatchMapping("/{accountId}/bank")
     public ResponseEntity<String> moveToBank(@PathVariable UUID accountId, @RequestParam int bankCode) {
         String message = accountService.moveToBank(accountId, bankCode);
@@ -85,6 +78,5 @@ public class AccountController {
         if (message.contains("taken by another")) {
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
-    }
+        return new ResponseEntity<>(message, HttpStatus.OK);}
 }

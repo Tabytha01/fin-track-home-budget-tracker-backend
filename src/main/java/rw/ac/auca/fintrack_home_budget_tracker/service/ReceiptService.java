@@ -21,8 +21,6 @@ public class ReceiptService {
         this.receiptRepository = receiptRepository;
         this.expenseRepository = expenseRepository;
     }
-
-    // E1
     public String saveReceipt(Receipt receipt, UUID expenseId) {
         Optional<Expense> expenseOpt = expenseRepository.findById(expenseId);
         if (expenseOpt.isEmpty()) {
@@ -36,13 +34,9 @@ public class ReceiptService {
         receiptRepository.save(receipt);
         return "Receipt saved successfully";
     }
-
-    // E2
     public List<Receipt> getByMemberCode(String memberCode) {
         return receiptRepository.findByMemberCode(memberCode);
     }
-
-    // E3
     public String deleteReceipt(UUID id) {
         Optional<Receipt> existing = receiptRepository.findById(id);
         if (existing.isEmpty()) {
@@ -51,7 +45,6 @@ public class ReceiptService {
         receiptRepository.deleteById(id);
         return "Receipt deleted successfully";
     }
-
     public boolean hasReceipts(Expense expense) {
         return receiptRepository.existsByExpense(expense);
     }

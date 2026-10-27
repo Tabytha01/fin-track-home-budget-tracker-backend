@@ -15,11 +15,10 @@ import java.util.UUID;
 public class ExpenseController {
 
     private final ExpenseService expenseService;
-
-    public ExpenseController(ExpenseService expenseService) {
+    public ExpenseController(ExpenseService expenseService)
+    {
         this.expenseService = expenseService;
     }
-
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Expense expense, @RequestParam UUID memberId, @RequestParam UUID accountId) {
         String message = expenseService.saveExpense(expense, memberId, accountId);
@@ -32,14 +31,11 @@ public class ExpenseController {
         if (message.contains("does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
-    }
-
+        return new ResponseEntity<>(message, HttpStatus.CREATED);}
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(expenseService.getAllExpenses(), HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
         Optional<Expense> result = expenseService.getExpenseById(id);
@@ -48,7 +44,6 @@ public class ExpenseController {
         }
         return new ResponseEntity<>(result.get(), HttpStatus.OK);
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Expense expense) {
         String message = expenseService.updateExpense(id, expense);
@@ -57,7 +52,6 @@ public class ExpenseController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = expenseService.deleteExpense(id);
@@ -69,20 +63,14 @@ public class ExpenseController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // B2
     @GetMapping("/by-status")
     public ResponseEntity<?> getByStatus(@RequestParam ExpenseStatus status) {
         return new ResponseEntity<>(expenseService.getExpensesByStatus(status), HttpStatus.OK);
     }
-
-    // B3
     @GetMapping("/between")
     public ResponseEntity<?> getBetween(@RequestParam String start, @RequestParam String end) {
         return new ResponseEntity<>(expenseService.getExpensesBetween(LocalDate.parse(start), LocalDate.parse(end)), HttpStatus.OK);
     }
-
-    // D2
     @PatchMapping("/{id}/status")
     public ResponseEntity<String> updateStatus(@PathVariable UUID id, @RequestParam ExpenseStatus status) {
         String message = expenseService.updateExpenseStatus(id, status);
@@ -94,17 +82,12 @@ public class ExpenseController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // F1
     @GetMapping("/stats/by-status")
     public ResponseEntity<?> statsByStatus() {
         return new ResponseEntity<>(expenseService.countByStatus(), HttpStatus.OK);
     }
-
-    // F2
     @PatchMapping("/cancel-day")
     public ResponseEntity<String> cancelDay(@RequestParam UUID accountId, @RequestParam String date) {
         String message = expenseService.cancelByAccountAndDate(accountId, LocalDate.parse(date));
-        return new ResponseEntity<>(message, HttpStatus.OK);
-    }
+        return new ResponseEntity<>(message, HttpStatus.OK);}
 }

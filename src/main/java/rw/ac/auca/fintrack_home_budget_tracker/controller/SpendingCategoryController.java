@@ -17,18 +17,15 @@ public class SpendingCategoryController {
     public SpendingCategoryController(SpendingCategoryService spendingCategoryService) {
         this.spendingCategoryService = spendingCategoryService;
     }
-
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody SpendingCategory spendingCategory) {
         String message = spendingCategoryService.saveSpendingCategory(spendingCategory);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
-
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(spendingCategoryService.getAllSpendingCategories(), HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
         Optional<SpendingCategory> result = spendingCategoryService.getSpendingCategoryById(id);
@@ -37,7 +34,6 @@ public class SpendingCategoryController {
         }
         return new ResponseEntity<>(result.get(), HttpStatus.OK);
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody SpendingCategory spendingCategory) {
         String message = spendingCategoryService.updateSpendingCategory(id, spendingCategory);
@@ -46,7 +42,6 @@ public class SpendingCategoryController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = spendingCategoryService.deleteSpendingCategory(id);
@@ -55,10 +50,7 @@ public class SpendingCategoryController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
-    // C3
     @GetMapping("/unused")
     public ResponseEntity<?> getUnused() {
-        return new ResponseEntity<>(spendingCategoryService.getUnused(), HttpStatus.OK);
-    }
+        return new ResponseEntity<>(spendingCategoryService.getUnused(), HttpStatus.OK);}
 }

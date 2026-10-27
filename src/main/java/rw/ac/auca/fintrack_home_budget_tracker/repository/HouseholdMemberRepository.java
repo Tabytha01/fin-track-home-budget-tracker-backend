@@ -8,11 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface HouseholdMemberRepository extends JpaRepository<HouseholdMember, UUID> {
-
-    // B1 - DERIVED
     List<HouseholdMember> findByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName);
-
-    // C4 - JPQL
     @Query("SELECT DISTINCT e.member FROM Expense e WHERE e.account.id = :accountId")
     List<HouseholdMember> findMembersByAccountId(@Param("accountId") UUID accountId);
 }

@@ -12,12 +12,9 @@ import java.util.UUID;
 public class ReceiptController {
 
     private final ReceiptService receiptService;
-
     public ReceiptController(ReceiptService receiptService) {
         this.receiptService = receiptService;
     }
-
-    // E1
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Receipt receipt, @RequestParam UUID expenseId) {
         String message = receiptService.saveReceipt(receipt, expenseId);
@@ -29,20 +26,15 @@ public class ReceiptController {
         }
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
-
-    // E2
     @GetMapping("/household-member/{memberCode}")
     public ResponseEntity<?> getByMemberCode(@PathVariable String memberCode) {
         return new ResponseEntity<>(receiptService.getByMemberCode(memberCode), HttpStatus.OK);
     }
-
-    // E3
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = receiptService.deleteReceipt(id);
         if (message.contains("does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
-    }
+        return new ResponseEntity<>(message, HttpStatus.OK);}
 }

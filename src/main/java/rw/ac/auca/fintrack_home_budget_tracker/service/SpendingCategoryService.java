@@ -47,4 +47,9 @@ public class SpendingCategoryService {
         spendingCategoryRepository.deleteById(id);
         return "Spending category deleted successfully";
     }
+
+    // C3
+    public List<SpendingCategory> getUnused() {
+        return spendingCategoryRepository.findUnused();
+    }
 }

@@ -47,4 +47,9 @@ public class BankService {
         bankRepository.deleteById(id);
         return "Bank deleted successfully";
     }
+
+    // C2
+    public List<Bank> getFreeBanks() {
+        return bankRepository.findFreeBanks();
+    }
 }

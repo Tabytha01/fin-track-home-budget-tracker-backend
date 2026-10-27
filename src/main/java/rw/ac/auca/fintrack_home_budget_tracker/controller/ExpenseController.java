@@ -2,17 +2,11 @@ package rw.ac.auca.fintrack_home_budget_tracker.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.Expense;
+import rw.ac.auca.fintrack_home_budget_tracker.entity.ExpenseStatus;
 import rw.ac.auca.fintrack_home_budget_tracker.service.ExpenseService;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,6 +23,12 @@ public class ExpenseController {
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Expense expense, @RequestParam UUID memberId, @RequestParam UUID accountId) {
         String message = expenseService.saveExpense(expense, memberId, accountId);
+        if (message.equals("Expense date cannot be in the past")) {
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        if (message.equals("Account already has an expense on that date")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
         if (message.contains("does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
@@ -64,6 +64,47 @@ public class ExpenseController {
         if (message.contains("does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
+        if (message.contains("has receipts")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // B2
+    @GetMapping("/by-status")
+    public ResponseEntity<?> getByStatus(@RequestParam ExpenseStatus status) {
+        return new ResponseEntity<>(expenseService.getExpensesByStatus(status), HttpStatus.OK);
+    }
+
+    // B3
+    @GetMapping("/between")
+    public ResponseEntity<?> getBetween(@RequestParam String start, @RequestParam String end) {
+        return new ResponseEntity<>(expenseService.getExpensesBetween(LocalDate.parse(start), LocalDate.parse(end)), HttpStatus.OK);
+    }
+
+    // D2
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<String> updateStatus(@PathVariable UUID id, @RequestParam ExpenseStatus status) {
+        String message = expenseService.updateExpenseStatus(id, status);
+        if (message.contains("does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        if (message.startsWith("Cannot change")) {
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // F1
+    @GetMapping("/stats/by-status")
+    public ResponseEntity<?> statsByStatus() {
+        return new ResponseEntity<>(expenseService.countByStatus(), HttpStatus.OK);
+    }
+
+    // F2
+    @PatchMapping("/cancel-day")
+    public ResponseEntity<String> cancelDay(@RequestParam UUID accountId, @RequestParam String date) {
+        String message = expenseService.cancelByAccountAndDate(accountId, LocalDate.parse(date));
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

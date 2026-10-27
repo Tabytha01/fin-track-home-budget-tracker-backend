@@ -2,7 +2,11 @@ package rw.ac.auca.fintrack_home_budget_tracker.service;
 
 import org.springframework.stereotype.Service;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.Account;
+import rw.ac.auca.fintrack_home_budget_tracker.entity.Bank;
+import rw.ac.auca.fintrack_home_budget_tracker.entity.SpendingCategory;
 import rw.ac.auca.fintrack_home_budget_tracker.repository.AccountRepository;
+import rw.ac.auca.fintrack_home_budget_tracker.repository.BankRepository;
+import rw.ac.auca.fintrack_home_budget_tracker.repository.SpendingCategoryRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -11,9 +15,13 @@ import java.util.UUID;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final SpendingCategoryRepository spendingCategoryRepository;
+    private final BankRepository bankRepository;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, SpendingCategoryRepository spendingCategoryRepository, BankRepository bankRepository) {
         this.accountRepository = accountRepository;
+        this.spendingCategoryRepository = spendingCategoryRepository;
+        this.bankRepository = bankRepository;
     }
 
     public String saveAccount(Account account) {
@@ -46,5 +54,50 @@ public class AccountService {
         }
         accountRepository.deleteById(id);
         return "Account deleted successfully";
+    }
+
+    // C1
+    public List<Account> getAccountsBySpendingCategory(String name) {
+        return accountRepository.findBySpendingCategoryName(name);
+    }
+
+    // D3
+    public String addSpendingCategory(UUID accountId, UUID spendingCategoryId) {
+        Optional<Account> accountOpt = accountRepository.findById(accountId);
+        if (accountOpt.isEmpty()) {
+            return "The account with that id does not exist";
+        }
+        Optional<SpendingCategory> categoryOpt = spendingCategoryRepository.findById(spendingCategoryId);
+        if (categoryOpt.isEmpty()) {
+            return "That spending category does not exist";
+        }
+        Account account = accountOpt.get();
+        SpendingCategory category = categoryOpt.get();
+        if (account.getSpendingCategories().contains(category)) {
+            return "The account already has that spending category";
+        }
+        account.getSpendingCategories().add(category);
+        accountRepository.save(account);
+        return "Spending category added to the account";
+    }
+
+    // D4
+    public String moveToBank(UUID accountId, int bankCode) {
+        Optional<Account> accountOpt = accountRepository.findById(accountId);
+        if (accountOpt.isEmpty()) {
+            return "The account with that id does not exist";
+        }
+        Optional<Bank> bankOpt = bankRepository.findByBankCode(bankCode);
+        if (bankOpt.isEmpty()) {
+            return "The bank with that bankCode does not exist";
+        }
+        Bank bank = bankOpt.get();
+        Account account = accountOpt.get();
+        if (accountRepository.existsByBank(bank) && !bank.equals(account.getBank())) {
+            return "That bank is taken by another account";
+        }
+        account.setBank(bank);
+        accountRepository.save(account);
+        return "Bank changed successfully";
     }
 }

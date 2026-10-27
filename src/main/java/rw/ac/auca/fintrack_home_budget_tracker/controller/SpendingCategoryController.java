@@ -2,14 +2,7 @@ package rw.ac.auca.fintrack_home_budget_tracker.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.SpendingCategory;
 import rw.ac.auca.fintrack_home_budget_tracker.service.SpendingCategoryService;
 import java.util.Optional;
@@ -61,5 +54,11 @@ public class SpendingCategoryController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // C3
+    @GetMapping("/unused")
+    public ResponseEntity<?> getUnused() {
+        return new ResponseEntity<>(spendingCategoryService.getUnused(), HttpStatus.OK);
     }
 }

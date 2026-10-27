@@ -2,14 +2,7 @@ package rw.ac.auca.fintrack_home_budget_tracker.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.HouseholdMember;
 import rw.ac.auca.fintrack_home_budget_tracker.service.HouseholdMemberService;
 import java.util.Optional;
@@ -61,5 +54,20 @@ public class HouseholdMemberController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // B1
+    @GetMapping("/by-last-name")
+    public ResponseEntity<?> getByLastName(@RequestParam String lastName) {
+        return new ResponseEntity<>(householdMemberService.getByLastName(lastName), HttpStatus.OK);
+    }
+
+    // C4
+    @GetMapping("/of-account/{accountId}")
+    public ResponseEntity<?> getMembersByAccount(@PathVariable UUID accountId) {
+        if (!householdMemberService.accountExists(accountId)) {
+            return new ResponseEntity<>("The account with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(householdMemberService.getMembersByAccount(accountId), HttpStatus.OK);
     }
 }

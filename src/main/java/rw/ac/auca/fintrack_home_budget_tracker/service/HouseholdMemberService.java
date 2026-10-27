@@ -2,6 +2,7 @@ package rw.ac.auca.fintrack_home_budget_tracker.service;
 
 import org.springframework.stereotype.Service;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.HouseholdMember;
+import rw.ac.auca.fintrack_home_budget_tracker.repository.AccountRepository;
 import rw.ac.auca.fintrack_home_budget_tracker.repository.HouseholdMemberRepository;
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +12,11 @@ import java.util.UUID;
 public class HouseholdMemberService {
 
     private final HouseholdMemberRepository householdMemberRepository;
+    private final AccountRepository accountRepository;
 
-    public HouseholdMemberService(HouseholdMemberRepository householdMemberRepository) {
+    public HouseholdMemberService(HouseholdMemberRepository householdMemberRepository, AccountRepository accountRepository) {
         this.householdMemberRepository = householdMemberRepository;
+        this.accountRepository = accountRepository;
     }
 
     public String saveHouseholdMember(HouseholdMember householdMember) {
@@ -46,5 +49,19 @@ public class HouseholdMemberService {
         }
         householdMemberRepository.deleteById(id);
         return "Household member deleted successfully";
+    }
+
+    // B1
+    public List<HouseholdMember> getByLastName(String lastName) {
+        return householdMemberRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
+    // C4
+    public boolean accountExists(UUID accountId) {
+        return accountRepository.existsById(accountId);
+    }
+
+    public List<HouseholdMember> getMembersByAccount(UUID accountId) {
+        return householdMemberRepository.findMembersByAccountId(accountId);
     }
 }

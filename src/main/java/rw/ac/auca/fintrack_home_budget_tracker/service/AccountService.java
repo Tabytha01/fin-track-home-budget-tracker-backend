@@ -56,12 +56,12 @@ public class AccountService {
         return "Account deleted successfully";
     }
 
-    // C1
+    // C1: Retrieve accounts that hold a specific spending category, matched case-insensitively
     public List<Account> getAccountsBySpendingCategory(String name) {
         return accountRepository.findBySpendingCategoryName(name);
     }
 
-    // D3
+    // D3: Add a spending category to an account without removing existing ones
     public String addSpendingCategory(UUID accountId, UUID spendingCategoryId) {
         Optional<Account> accountOpt = accountRepository.findById(accountId);
         if (accountOpt.isEmpty()) {
@@ -81,7 +81,7 @@ public class AccountService {
         return "Spending category added to the account";
     }
 
-    // D4
+    // D4: Move an account to a different bank, ensuring the target bank is not already occupied
     public String moveToBank(UUID accountId, int bankCode) {
         Optional<Account> accountOpt = accountRepository.findById(accountId);
         if (accountOpt.isEmpty()) {

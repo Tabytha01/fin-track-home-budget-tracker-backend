@@ -21,6 +21,7 @@ public class ReceiptService {
         this.receiptRepository = receiptRepository;
         this.expenseRepository = expenseRepository;
     }
+    // E1: Save a receipt only if the linked expense is in PAID status
     public String saveReceipt(Receipt receipt, UUID expenseId) {
         Optional<Expense> expenseOpt = expenseRepository.findById(expenseId);
         if (expenseOpt.isEmpty()) {
@@ -34,9 +35,11 @@ public class ReceiptService {
         receiptRepository.save(receipt);
         return "Receipt saved successfully";
     }
+    // E2: Retrieve all receipts for a household member across all their expenses, newest first
     public List<Receipt> getByMemberCode(String memberCode) {
         return receiptRepository.findByMemberCode(memberCode);
     }
+    // E3: Delete a receipt by id after confirming it exists
     public String deleteReceipt(UUID id) {
         Optional<Receipt> existing = receiptRepository.findById(id);
         if (existing.isEmpty()) {

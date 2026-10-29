@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.List;
-import java.util.
+import java.util.UUID;
 
 @Entity
 @Table(name = "account")

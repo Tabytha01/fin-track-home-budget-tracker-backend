@@ -1,0 +1,910 @@
+{
+  "info": {
+    "_postman_id": "976648cd-006a-4d26-93f8-9884791db8b5",
+    "name": "fintrack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49884438",
+    "_collection_link": "https://go.postman.co/collection/49884438-976648cd-006a-4d26-93f8-9884791db8b5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/api/banks/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"bankCode\": 101,\r\n  \"name\": \"Equity Bank\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/banks/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "banks",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/banks/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"bankCode\": 101,\r\n  \"name\": \"Equity Bank\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/banks/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "banks",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/banks/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"bankCode\": 103,\r\n  \"name\": \"I&M Bank\"\r\n}\r\n"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/banks/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "banks",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/spending-categories/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Groceries\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/spending-categories/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "spending-categories",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/household-members/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"Kalisa\",\r\n  \"lastName\": \"Paul\",\r\n  \"memberCode\": \"MEM001\",\r\n  \"phone\": \"0781000001\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/household-members/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "household-members",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/accounts/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"accountName\": \"Main Household\",\r\n  \"holderName\": \"Kalisa Paul\",\r\n  \"accountNumber\": \"ACC-001\",\r\n  \"bank\": { \"id\": \"ce12c0e8-0140-4ba9-b078-028b4db3282d\" },\r\n  \"spendingCategories\": []\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/accounts/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"accountName\": \"Secondary\",\r\n  \"holderName\": \"Gatesi Pascaline\",\r\n  \"accountNumber\": \"ACC-002\",\r\n  \"bank\": { \"id\": \"963909d9-e0c0-4a5f-9865-01f122c27390\" },\r\n  \"spendingCategories\": []\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/spending-categories/698278e4-a839-4853-a0d3-55be",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/spending-categories/698278e4-a839-4853-a0d3-55be2bcfdd59\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "c466f281-3bf3-434c-98a3-9ed662f81e99",
+            "spending-categories",
+            "698278e4-a839-4853-a0d3-55be2bcfdd59\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/spending-categories/511f75a2-b8a3-4a45-b0e4-55e4",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/spending-categories/511f75a2-b8a3-4a45-b0e4-55e4df7c8d98\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "c466f281-3bf3-434c-98a3-9ed662f81e99",
+            "spending-categories",
+            "511f75a2-b8a3-4a45-b0e4-55e4df7c8d98\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"expenseDate\": \"2026-11-05\",\r\n  \"description\": \"Electricity bill\",\r\n  \"amount\": 15000\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/save?memberId=dca421c3-17e5-4f8a-8468-03a95a00d778&accountId=c466f281-3bf3-434c-98a3-9ed662f81e99\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "memberId",
+              "value": "dca421c3-17e5-4f8a-8468-03a95a00d778"
+            },
+            {
+              "key": "accountId",
+              "value": "c466f281-3bf3-434c-98a3-9ed662f81e99\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"expenseDate\": \"2026-11-06\",\r\n  \"description\": \"Weekly groceries\",\r\n  \"amount\": 25000\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/save?memberId=8b40ac1d-c75f-4290-a5e4-742dab8c3d57&accountId=c466f281-3bf3-434c-98a3-9ed662f81e99\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "memberId",
+              "value": "8b40ac1d-c75f-4290-a5e4-742dab8c3d57"
+            },
+            {
+              "key": "accountId",
+              "value": "c466f281-3bf3-434c-98a3-9ed662f81e99\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"expenseDate\": \"2026-11-07\",\r\n  \"description\": \"Weekly bus fare\",\r\n  \"amount\": 5000\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/save?memberId=4890fe29-eed4-49d2-8539-04394b754f23&accountId=347d916e-26e8-45db-8cd2-6225dcc685f8\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "memberId",
+              "value": "4890fe29-eed4-49d2-8539-04394b754f23"
+            },
+            {
+              "key": "accountId",
+              "value": "347d916e-26e8-45db-8cd2-6225dcc685f8\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/fd9bd251-d5ea-4889-b81b-24b862155312/status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/fd9bd251-d5ea-4889-b81b-24b862155312/status?status=PENDING\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "fd9bd251-d5ea-4889-b81b-24b862155312",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "PENDING\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/fd9bd251-d5ea-4889-b81b-24b862155312/status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/fd9bd251-d5ea-4889-b81b-24b862155312/status?status=PAID\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "fd9bd251-d5ea-4889-b81b-24b862155312",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "PAID\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/receipts/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"storeName\": \"RECO Electricity\",\r\n  \"note\": \"November electricity payment\",\r\n  \"itemCount\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/receipts/save?expenseId=fd9bd251-d5ea-4889-b81b-24b862155312",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "receipts",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "expenseId",
+              "value": "fd9bd251-d5ea-4889-b81b-24b862155312"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/household-members/by-last-name",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/household-members/by-last-name?lastName=Kalisa",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "household-members",
+            "by-last-name"
+          ],
+          "query": [
+            {
+              "key": "lastName",
+              "value": "Kalisa"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/by-status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/by-status?status=PLANNED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "by-status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "PLANNED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/between",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/by-spending-category?name=Groceries",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "by-spending-category"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Groceries"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/banks/free",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/banks/free",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "banks",
+            "free"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/spending-categories/unused",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/spending-categories/unused",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "spending-categories",
+            "unused"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/household-members/of-account/c466f281-3bf3-434c-98a3-9ed662f81e99",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/household-members/of-account/c466f281-3bf3-434c-98a3-9ed662f81e99",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "household-members",
+            "of-account",
+            "c466f281-3bf3-434c-98a3-9ed662f81e99"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/stats/by-status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/stats/by-status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "stats",
+            "by-status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"expenseDate\": \"2026-10-01\",\r\n  \"description\": \"Test past date\",\r\n  \"amount\": 5000\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/save?memberId=dca421c3-17e5-4f8a-8468-03a95a00d778&accountId=c466f281-3bf3-434c-98a3-9ed662f81e99\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "memberId",
+              "value": "dca421c3-17e5-4f8a-8468-03a95a00d778"
+            },
+            {
+              "key": "accountId",
+              "value": "c466f281-3bf3-434c-98a3-9ed662f81e99\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"expenseDate\": \"2026-11-06\",\r\n  \"description\": \"Duplicate date test\",\r\n  \"amount\": 5000\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/save?memberId=dca421c3-17e5-4f8a-8468-03a95a00d778&accountId=c466f281-3bf3-434c-98a3-9ed662f81e99",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "memberId",
+              "value": "dca421c3-17e5-4f8a-8468-03a95a00d778"
+            },
+            {
+              "key": "accountId",
+              "value": "c466f281-3bf3-434c-98a3-9ed662f81e99"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/7cccf077-03c5-442b-82c0-b62457ed6e13/status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/7cccf077-03c5-442b-82c0-b62457ed6e13/status?status=PAID",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "7cccf077-03c5-442b-82c0-b62457ed6e13",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "PAID"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/receipts/save",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"storeName\": \"Test Store\",\r\n  \"note\": \"Test receipt\",\r\n  \"itemCount\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/receipts/save?expenseId=7cccf077-03c5-442b-82c0-b62457ed6e13\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "receipts",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "expenseId",
+              "value": "7cccf077-03c5-442b-82c0-b62457ed6e13\n"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/expenses/delete/fd9bd251-d5ea-4889-b81b-24b862155312",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/expenses/delete/fd9bd251-d5ea-4889-b81b-24b862155312",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "expenses",
+            "delete",
+            "fd9bd251-d5ea-4889-b81b-24b862155312"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/bank",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/accounts/c466f281-3bf3-434c-98a3-9ed662f81e99/bank?bankCode=101",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "accounts",
+            "c466f281-3bf3-434c-98a3-9ed662f81e99",
+            "bank"
+          ],
+          "query": [
+            {
+              "key": "bankCode",
+              "value": "101"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

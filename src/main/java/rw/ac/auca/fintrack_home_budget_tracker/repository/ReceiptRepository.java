@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ReceiptRepository extends JpaRepository<Receipt, UUID> {
-    @Query("SELECT r FROM Receipt r WHERE r.expense.member.memberCode = :memberCode ORDER BY r.recordedDate DESC")
+    @Query("select r from Receipt r where r.expense.member.memberCode = :memberCode ORDER BY r.recordedDate DESC")
     List<Receipt> findByMemberCode(@Param("memberCode") String memberCode);
     boolean existsByExpense(Expense expense);
 }

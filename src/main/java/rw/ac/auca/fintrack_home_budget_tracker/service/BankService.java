@@ -11,24 +11,19 @@ import java.util.UUID;
 public class BankService {
 
     private final BankRepository bankRepository;
-
     public BankService(BankRepository bankRepository) {
         this.bankRepository = bankRepository;
     }
-
     public String saveBank(Bank bank) {
         bankRepository.save(bank);
         return "Bank saved successfully";
     }
-
     public List<Bank> getAllBanks() {
         return bankRepository.findAll();
     }
-
     public Optional<Bank> getBankById(UUID id) {
         return bankRepository.findById(id);
     }
-
     public String updateBank(UUID id, Bank bank) {
         Optional<Bank> existing = bankRepository.findById(id);
         if (existing.isEmpty()) {
@@ -38,7 +33,6 @@ public class BankService {
         bankRepository.save(bank);
         return "Bank updated successfully";
     }
-
     public String deleteBank(UUID id) {
         Optional<Bank> existing = bankRepository.findById(id);
         if (existing.isEmpty()) {
@@ -47,8 +41,7 @@ public class BankService {
         bankRepository.deleteById(id);
         return "Bank deleted successfully";
     }
-
-    // C2
+    // c2
     public List<Bank> getFreeBanks() {
         return bankRepository.findFreeBanks();
     }

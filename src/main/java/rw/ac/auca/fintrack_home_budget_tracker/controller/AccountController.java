@@ -2,7 +2,16 @@ package rw.ac.auca.fintrack_home_budget_tracker.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import rw.ac.auca.fintrack_home_budget_tracker.entity.Account;
 import rw.ac.auca.fintrack_home_budget_tracker.service.AccountService;
 import java.util.Optional;
@@ -11,7 +20,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
-
     private final AccountService accountService;
     public AccountController(AccountService accountService)
     {
@@ -22,12 +30,10 @@ public class AccountController {
         String message = accountService.saveAccount(account);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
-
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(accountService.getAllAccounts(), HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
         Optional<Account> result = accountService.getAccountById(id);
@@ -36,7 +42,6 @@ public class AccountController {
         }
         return new ResponseEntity<>(result.get(), HttpStatus.OK);
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Account account) {
         String message = accountService.updateAccount(id, account);
@@ -45,7 +50,6 @@ public class AccountController {
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = accountService.deleteAccount(id);

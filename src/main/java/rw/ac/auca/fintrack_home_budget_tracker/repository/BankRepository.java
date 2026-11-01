@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface BankRepository extends JpaRepository<Bank, UUID> {
-    @Query("SELECT b FROM Bank b WHERE NOT EXISTS (SELECT a FROM Account a WHERE a.bank = b) ORDER BY b.bankCode ASC")
+    @Query("select b from Bank b where NOT EXISTS (select a FROM Account a where a.bank = b) ORDER BY b.bankCode ASC")
     List<Bank> findFreeBanks();
     Optional<Bank> findByBankCode(int bankCode);
 }

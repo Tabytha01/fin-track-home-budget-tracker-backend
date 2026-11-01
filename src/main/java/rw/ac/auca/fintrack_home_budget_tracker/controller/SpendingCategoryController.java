@@ -13,7 +13,6 @@ import java.util.UUID;
 public class SpendingCategoryController {
 
     private final SpendingCategoryService spendingCategoryService;
-
     public SpendingCategoryController(SpendingCategoryService spendingCategoryService) {
         this.spendingCategoryService = spendingCategoryService;
     }

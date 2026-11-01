@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface HouseholdMemberRepository extends JpaRepository<HouseholdMember, UUID> {
     List<HouseholdMember> findByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName);
-    @Query("SELECT DISTINCT e.member FROM Expense e WHERE e.account.id = :accountId")
+    @Query("select DISTINCT e.member from Expense e where e.account.id = :accountId")
     List<HouseholdMember> findMembersByAccountId(@Param("accountId") UUID accountId);
 }

@@ -18,7 +18,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, UUID> {
     @Query("SELECT e.status, COUNT(e) FROM Expense e GROUP BY e.status")
     List<Object[]> countByStatus();
     @Modifying
-    @Query("UPDATE Expense e SET e.status = rw.ac.auca.fintrack_home_budget_tracker.entity.ExpenseStatus.VOIDED " +
+    @Query("update Expense e SET e.status = rw.ac.auca.fintrack_home_budget_tracker.entity.ExpenseStatus.VOIDED " +
            "WHERE e.account.id = :accountId AND e.expenseDate = :date AND e.status <> rw.ac.auca.fintrack_home_budget_tracker.entity.ExpenseStatus.PAID")
     int cancelByAccountAndDate(@Param("accountId") UUID accountId, @Param("date") LocalDate date);
 }

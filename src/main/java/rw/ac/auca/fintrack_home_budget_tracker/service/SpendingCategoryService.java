@@ -14,7 +14,6 @@ public class SpendingCategoryService {
     public SpendingCategoryService(SpendingCategoryRepository spendingCategoryRepository) {
         this.spendingCategoryRepository = spendingCategoryRepository;
     }
-
     public String saveSpendingCategory(SpendingCategory spendingCategory) {
         spendingCategoryRepository.save(spendingCategory);
         return "Spending category saved successfully";
@@ -25,7 +24,6 @@ public class SpendingCategoryService {
     public Optional<SpendingCategory> getSpendingCategoryById(UUID id) {
         return spendingCategoryRepository.findById(id);
     }
-
     public String updateSpendingCategory(UUID id, SpendingCategory spendingCategory) {
         Optional<SpendingCategory> existing = spendingCategoryRepository.findById(id);
         if (existing.isEmpty()) {

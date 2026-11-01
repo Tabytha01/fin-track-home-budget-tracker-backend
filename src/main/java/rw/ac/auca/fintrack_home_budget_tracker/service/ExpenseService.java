@@ -22,15 +22,13 @@ public class ExpenseService {
     private final HouseholdMemberRepository householdMemberRepository;
     private final AccountRepository accountRepository;
     private final ReceiptRepository receiptRepository;
-
     public ExpenseService(ExpenseRepository expenseRepository, HouseholdMemberRepository householdMemberRepository, AccountRepository accountRepository, ReceiptRepository receiptRepository) {
         this.expenseRepository = expenseRepository;
         this.householdMemberRepository = householdMemberRepository;
         this.accountRepository = accountRepository;
         this.receiptRepository = receiptRepository;
     }
-
-    // D1: Validate date and account conflict before saving a new expense
+    // d1: Validate date and account conflict before saving a new expense
     public String saveExpense(Expense expense, UUID memberId, UUID accountId) {
         if (expense.getExpenseDate().isBefore(LocalDate.now())) {
             return "Expense date cannot be in the past";
@@ -56,12 +54,9 @@ public class ExpenseService {
     public List<Expense> getAllExpenses() {
         return expenseRepository.findAll();
     }
-
     public Optional<Expense> getExpenseById(UUID id) {
         return expenseRepository.findById(id);
     }
-
-    // D2: Update expense fields but preserve the existing status to prevent direct status changes
     public String updateExpense(UUID id, Expense expense) {
         Optional<Expense> existing = expenseRepository.findById(id);
         if (existing.isEmpty()) {
@@ -74,8 +69,6 @@ public class ExpenseService {
         expenseRepository.save(expense);
         return "Expense updated successfully";
     }
-
-    // D2: Move expense through allowed status transitions only: PLANNED->PENDING->PAID or VOIDED
     public String updateExpenseStatus(UUID id, ExpenseStatus newStatus) {
         Optional<Expense> existing = expenseRepository.findById(id);
         if (existing.isEmpty()) {
@@ -91,7 +84,6 @@ public class ExpenseService {
         expenseRepository.save(existing.get());
         return "Expense status updated successfully";
     }
-
     public String deleteExpense(UUID id) {
         Optional<Expense> existing = expenseRepository.findById(id);
         if (existing.isEmpty()) {
@@ -103,26 +95,17 @@ public class ExpenseService {
         expenseRepository.deleteById(id);
         return "Expense deleted successfully";
     }
-
-    // B2: Retrieve all expenses filtered by a given status, ordered by earliest date first
     public List<Expense> getExpensesByStatus(ExpenseStatus status) {
         return expenseRepository.findByStatusOrderByExpenseDateAsc(status);
     }
-
-    // B3: Retrieve all expenses within a date range, both dates inclusive
     public List<Expense> getExpensesBetween(LocalDate start, LocalDate end) {
         return expenseRepository.findByExpenseDateBetweenOrderByExpenseDateAsc(start, end);
     }
-
-    // F1: Count how many expenses exist per status for reporting purposes
     public List<Object[]> countByStatus() {
         return expenseRepository.countByStatus();
     }
-
-    // F2: Bulk cancel all non-PAID expenses for a given account on a specific date
     @Transactional
     public String cancelByAccountAndDate(UUID accountId, LocalDate date) {
         int count = expenseRepository.cancelByAccountAndDate(accountId, date);
         return count + " expenses cancelled";
-    }
-}
+    }}

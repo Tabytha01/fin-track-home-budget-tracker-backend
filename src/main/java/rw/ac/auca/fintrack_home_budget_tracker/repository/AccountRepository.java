@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AccountRepository extends JpaRepository<Account, UUID> {
-    @Query("SELECT a FROM Account a JOIN a.spendingCategories c WHERE LOWER(c.name) = LOWER(:name)")
+    @Query("select a from Account a JOIN a.spendingCategories c where LOWER(c.name) = LOWER(:name)")
     List<Account> findBySpendingCategoryName(@Param("name") String name);
     Optional<Account> findByBank(Bank bank);
     boolean existsByBank(Bank bank);

@@ -17,26 +17,21 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final SpendingCategoryRepository spendingCategoryRepository;
     private final BankRepository bankRepository;
-
     public AccountService(AccountRepository accountRepository, SpendingCategoryRepository spendingCategoryRepository, BankRepository bankRepository) {
         this.accountRepository = accountRepository;
         this.spendingCategoryRepository = spendingCategoryRepository;
         this.bankRepository = bankRepository;
     }
-
     public String saveAccount(Account account) {
         accountRepository.save(account);
         return "Account saved successfully";
     }
-
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
-
     public Optional<Account> getAccountById(UUID id) {
         return accountRepository.findById(id);
     }
-
     public String updateAccount(UUID id, Account account) {
         Optional<Account> existing = accountRepository.findById(id);
         if (existing.isEmpty()) {
@@ -46,7 +41,6 @@ public class AccountService {
         accountRepository.save(account);
         return "Account updated successfully";
     }
-
     public String deleteAccount(UUID id) {
         Optional<Account> existing = accountRepository.findById(id);
         if (existing.isEmpty()) {
@@ -55,13 +49,11 @@ public class AccountService {
         accountRepository.deleteById(id);
         return "Account deleted successfully";
     }
-
-    // C1: Retrieve accounts that hold a specific spending category, matched case-insensitively
+    // c1: retrieve accounts that hold a specific spending category, matched case-insensitively
     public List<Account> getAccountsBySpendingCategory(String name) {
         return accountRepository.findBySpendingCategoryName(name);
     }
-
-    // D3: Add a spending category to an account without removing existing ones
+    // d3: add a spending category to an account without removing existing ones
     public String addSpendingCategory(UUID accountId, UUID spendingCategoryId) {
         Optional<Account> accountOpt = accountRepository.findById(accountId);
         if (accountOpt.isEmpty()) {
@@ -80,8 +72,7 @@ public class AccountService {
         accountRepository.save(account);
         return "Spending category added to the account";
     }
-
-    // D4: Move an account to a different bank, ensuring the target bank is not already occupied
+    // d4: move an account to a different bank, ensuring the target bank is not already occupied
     public String moveToBank(UUID accountId, int bankCode) {
         Optional<Account> accountOpt = accountRepository.findById(accountId);
         if (accountOpt.isEmpty()) {
@@ -98,6 +89,5 @@ public class AccountService {
         }
         account.setBank(bank);
         accountRepository.save(account);
-        return "Bank changed successfully";
-    }
+        return "Bank changed successfully";}
 }

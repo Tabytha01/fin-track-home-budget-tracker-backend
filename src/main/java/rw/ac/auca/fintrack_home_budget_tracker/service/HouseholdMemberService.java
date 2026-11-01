@@ -18,20 +18,16 @@ public class HouseholdMemberService {
         this.householdMemberRepository = householdMemberRepository;
         this.accountRepository = accountRepository;
     }
-
     public String saveHouseholdMember(HouseholdMember householdMember) {
         householdMemberRepository.save(householdMember);
         return "Household member saved successfully";
     }
-
     public List<HouseholdMember> getAllHouseholdMembers() {
         return householdMemberRepository.findAll();
     }
-
     public Optional<HouseholdMember> getHouseholdMemberById(UUID id) {
         return householdMemberRepository.findById(id);
     }
-
     public String updateHouseholdMember(UUID id, HouseholdMember householdMember) {
         Optional<HouseholdMember> existing = householdMemberRepository.findById(id);
         if (existing.isEmpty()) {
@@ -41,7 +37,6 @@ public class HouseholdMemberService {
         householdMemberRepository.save(householdMember);
         return "Household member updated successfully";
     }
-
     public String deleteHouseholdMember(UUID id) {
         Optional<HouseholdMember> existing = householdMemberRepository.findById(id);
         if (existing.isEmpty()) {
@@ -50,18 +45,13 @@ public class HouseholdMemberService {
         householdMemberRepository.deleteById(id);
         return "Household member deleted successfully";
     }
-
-    // B1
     public List<HouseholdMember> getByLastName(String lastName) {
         return householdMemberRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
-
-    // C4
     public boolean accountExists(UUID accountId) {
         return accountRepository.existsById(accountId);
     }
 
     public List<HouseholdMember> getMembersByAccount(UUID accountId) {
-        return householdMemberRepository.findMembersByAccountId(accountId);
-    }
+        return householdMemberRepository.findMembersByAccountId(accountId);}
 }
